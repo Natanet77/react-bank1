@@ -1,0 +1,23 @@
+.header {
+  padding: 18px 26px 14px 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 180px;
+}
+
+.header__time {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  color: black;
+}
+
+.header__icons {
+  width: 80px;
+  display: flex;
+  gap: 10px;
+}
+
+.header__icon {
+  height: 13px;
+}

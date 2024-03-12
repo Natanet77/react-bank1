@@ -4,10 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import WelcomePage from "./page/welcome";
 import SignupPage from "./page/signup";
-// import SigninPage from "./page/signin";
+import SigninPage from "./page/signin";
 import SignupConfirmPage from "./page/signup-confirm";
-// import BalancePage from "./page/balance";
-
+import BalancePage from "./page/balance";
 import AuthRoute from "./component/auth-route";
 import PrivateRoute from "./component/private-route";
 
@@ -102,11 +101,19 @@ const App: React.FC<{}> = () => {
           />
           <Route
             path="/balance"
-            element={<PrivateRoute>{/* <BalancePage /> */}</PrivateRoute>}
+            element={
+              <PrivateRoute>
+                <BalancePage />
+              </PrivateRoute>
+            }
           />
           <Route
             path="/signin"
-            element={<AuthRoute>{/* <SigninPage /> */}</AuthRoute>}
+            element={
+              <AuthRoute>
+                <SigninPage />
+              </AuthRoute>
+            }
           />
         </Routes>
       </BrowserRouter>

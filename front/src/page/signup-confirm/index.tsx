@@ -10,19 +10,19 @@ import Header from "../../component/header";
 import Heading from "../../component/heading";
 import Grid from "../../component/grid";
 import Field from "../../component/field";
-// import AnotherAction from "../../component/another-action";
+
 import Alert from "../../component/alert";
 
 import { Form, ALERT_STATUS, FIELD_ERROR } from "../../utils/form";
 
-import { saveSession, getTokenSession, getSession } from "../../utils/session";
+import { saveSession, getTokenSession } from "../../utils/session";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../App";
 import { AUTH_DATA_ACTION_TYPE } from "../../App";
 
 const SignupConfirmPage: React.FC = () => {
   const auth = useContext(AuthContext);
-  // const email = auth?.state.user.email;
+  const email = auth?.state.user.email;
 
   const navigate = useNavigate();
 
@@ -64,14 +64,11 @@ const SignupConfirmPage: React.FC = () => {
       if (value?.length < 1) {
         return FIELD_ERROR.EMPTY;
       }
-
       if (value?.length > 20) {
         return FIELD_ERROR.BIG;
       }
-
       return null;
     };
-
     submit = async () => {
       if (this.disabled === true) {
         this.validateAll();
@@ -79,7 +76,6 @@ const SignupConfirmPage: React.FC = () => {
       } else {
         console.log(this.value);
         this.setAlert(ALERT_STATUS.PROGRESS, "Loading...");
-
         try {
           const res = await fetch("http://localhost:4000/signup-confirm", {
             method: "POST",
@@ -88,9 +84,7 @@ const SignupConfirmPage: React.FC = () => {
             },
             body: this.convertData(),
           });
-
           const data = await res.json();
-
           if (res.ok) {
             auth?.dispatch({
               type: AUTH_DATA_ACTION_TYPE.LOGIN,
@@ -109,7 +103,6 @@ const SignupConfirmPage: React.FC = () => {
         }
       }
     };
-
     convertData = () => {
       return JSON.stringify({
         [this.FIELD_NAME.CODE]: Number(this.value[this.FIELD_NAME.CODE]),
@@ -130,14 +123,10 @@ const SignupConfirmPage: React.FC = () => {
           label="Code"
           name="code"
           type="number"
-          placeholder="firstnamecode"
+          placeholder="Code"
           onInput={(e) => signupConfirm.change(e.target.name, e.target.value)}
         />
-        {/* <AnotherAction
-          text="Do not received code?"
-          button="send again"
-          onClick={handleResend}
-        /> */}
+
         <Button
           disabled
           text="Confirm"

@@ -3,7 +3,7 @@ class User {
 
   constructor({ email, password }) {
     this.email = email
-    this.password = password
+    this.password = String(password)
     this.isConfirm = false
   }
 

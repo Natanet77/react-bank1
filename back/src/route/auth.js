@@ -149,26 +149,37 @@ router.post('/signin', function (req, res) {
   console.log(req.body)
   // console.log('signin email, password: ', email, password)
 
-  const user = User.getUserByEmail(email)
   if (!email || !password) {
     return res.status(400).json({
-      message: 'Error. There are no required fields',
+      message: "Помилка. Обов'язкові поля відсутні",
     })
   }
+
   try {
-    User.create({ email, password })
+    const user = User.getByEmail(email)
+
+    if (!user) {
+      return res.status(400).json({
+        message:
+          'Помилка. Користувач з таким email не існує',
+      })
+    }
+
+    if (user.password !== password) {
+      return res.status(400).json({
+        message: 'Помилка. Пароль не підходить',
+      })
+    }
+
+    const session = Session.create(user)
+
     return res.status(200).json({
-      message: 'The user is successfully registered',
-      user: {
-        isLogged: user.isLogged,
-        isConfirmed: user.isConfirmed,
-        token: user.token,
-        email: user.email,
-      },
+      message: 'Ви увійшли',
+      session,
     })
   } catch (err) {
     return res.status(400).json({
-      message: 'Error creating user',
+      message: err.message,
     })
   }
 })

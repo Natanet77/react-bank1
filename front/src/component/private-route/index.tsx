@@ -13,7 +13,7 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({
     const isConfirm = user.isConfirm;
 
     if (isConfirm) {
-      return <Navigate to="/signin" replace />;
+      return <Navigate to="/balance" replace />;
     }
 
     return <>{children}</>;

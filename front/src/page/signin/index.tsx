@@ -28,14 +28,12 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../App";
 import { AUTH_DATA_ACTION_TYPE } from "../../App";
 
-const SignupPage: React.FC = () => {
+const SigninPage: React.FC = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
   class SignupForm extends Form {
     FIELD_NAME = {
-      // FIRSTNAME: "firstname",
-      // LASTNAME: "lastname",
       EMAIL: "email",
       PASSWORD: "password",
     };
@@ -58,20 +56,8 @@ const SignupPage: React.FC = () => {
         }
       }
 
-      if (name === this.FIELD_NAME.PASSWORD) {
-        if (!REG_EXP_PASSWORD.test(String(value))) return FIELD_ERROR.PASSWORD;
-      }
-
-      // if (name === this.FIELD_NAME.FIRSTNAME) {
-      //   if (!REG_EXP_NAME.test(String(value))) {
-      //     return FIELD_ERROR.FIRSTNAME;
-      //   }
-      // }
-
-      // if (name === this.FIELD_NAME.LASTNAME) {
-      //   if (!REG_EXP_NAME.test(String(value))) {
-      //     return FIELD_ERROR.LASTNAME;
-      //   }
+      // if (name === this.FIELD_NAME.PASSWORD) {
+      //   if (!REG_EXP_PASSWORD.test(String(value))) return FIELD_ERROR.PASSWORD;
       // }
 
       return null;
@@ -82,10 +68,11 @@ const SignupPage: React.FC = () => {
         this.validateAll();
         this.firstValidate = true;
       } else {
+        console.log(this.value);
         this.setAlert(ALERT_STATUS.PROGRESS, "Loading...");
 
         try {
-          const res = await fetch("http://localhost:4000/signup", {
+          const res = await fetch("http://localhost:4000/signin", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -102,7 +89,7 @@ const SignupPage: React.FC = () => {
             });
             console.log("success", data.message);
             saveSession(data.session);
-            navigate("/signup-confirm");
+            navigate("/balance");
           } else {
             this.setAlert(ALERT_STATUS.ERROR, data.message);
           }
@@ -131,7 +118,7 @@ const SignupPage: React.FC = () => {
       <Header />
       <BackButton />
 
-      <Heading title="Sign up" subtitle="Choose a registration method" />
+      <Heading title="Sign in" subtitle="Select login method" />
       <Grid big>
         {/* <Field
           label="Firstname"
@@ -162,9 +149,9 @@ const SignupPage: React.FC = () => {
           onInput={(e) => signup.change(e.target.name, e.target.value)}
         />
         <AnotherAction
-          text="Already have an account?"
-          button="Sign In"
-          onClick={() => navigate("/signin")}
+          text="Forgot your password?"
+          button="Restore"
+          onClick={() => navigate("/recovery")}
         />
         <Button text="Continue" onClick={() => signup.submit()} disabled />
         <Alert />
@@ -173,4 +160,4 @@ const SignupPage: React.FC = () => {
   );
 };
 
-export default SignupPage;
+export default SigninPage;

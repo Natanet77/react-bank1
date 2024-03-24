@@ -67,6 +67,7 @@ const SignupConfirmPage: React.FC = () => {
       if (value?.length > 20) {
         return FIELD_ERROR.BIG;
       }
+
       return null;
     };
     submit = async () => {

@@ -6,7 +6,10 @@ import WelcomePage from "./page/welcome";
 import SignupPage from "./page/signup";
 import SigninPage from "./page/signin";
 import SignupConfirmPage from "./page/signup-confirm";
+
 import BalancePage from "./page/balance";
+import RecoveryPage from "./page/recovery";
+import RecoveryConfirmPage from "./page/recovery-confirm";
 import AuthRoute from "./component/auth-route";
 import PrivateRoute from "./component/private-route";
 
@@ -112,6 +115,22 @@ const App: React.FC<{}> = () => {
             element={
               <AuthRoute>
                 <SigninPage />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/recovery"
+            element={
+              <AuthRoute>
+                <RecoveryPage />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/recovery-confirm"
+            element={
+              <AuthRoute>
+                <RecoveryConfirmPage />
               </AuthRoute>
             }
           />

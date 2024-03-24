@@ -1,0 +1,166 @@
+.balance-page {
+  background-color: #f4f7fa;
+  font-family: "Arial", sans-serif;
+  width: 393px;
+  height: 852px;
+  margin: auto;
+  overflow: hidden; /* Ensures content is contained within rounded borders */
+}
+
+.balance-header {
+  position: relative;
+  background: linear-gradient(160deg, #7f7fd5, #86a8e7, #91eae4);
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-bottom: 20px; /* Space for the floating action buttons */
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.right-icon {
+  background-image: url("../../../public/svg/bell.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+.left-icon {
+  background-image: url("../../../public/svg/bill-ringing.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  color: #f3f5ff;
+  text-align: center;
+  font-family: Jost;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 16px */
+}
+
+.balance-info {
+  margin: 20px 0;
+}
+
+.balance-amount {
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Jost;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 34px */
+}
+
+.balance-actions {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  bottom: -30px; /* Half of the button's height to sink it under the gradient */
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.action-button {
+  width: 52px; /* Button size */
+  height: 52px; /* Button size */
+  border-radius: 50%;
+  border: 5px solid white; /* White border */
+  background-color: #4e54c8; /* Button color */
+  color: white;
+  box-shadow: 0 4px #999;
+  margin: 0 15px;
+  position: relative;
+  top: 30px;
+}
+
+/* Action buttons will have SVG icons, adjust the styles accordingly */
+.action-button.receive-btn {
+  background-image: url("../../../public/svg/arror-down.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.action-button.send-btn {
+  background-image: url("../../../public/svg/peoples.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.but-div button {
+  margin-bottom: 12px;
+}
+
+.but-div {
+  margin-top: 30px;
+}
+
+.but-div span {
+  position: relative;
+  top: 30px;
+  color: #1d1d1f;
+  text-align: center;
+  font-family: Jost;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 14px */
+}
+
+.transactions-list {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 60px; /* Adjust top margin to make space for the buttons */
+  z-index: 1;
+  position: relative;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.transaction-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.transaction-info {
+  flex-grow: 1;
+}
+
+.transaction-from {
+  font-weight: bold;
+}
+
+.transaction-amount {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.transaction-time {
+  font-size: 0.8em;
+  color: #999;
+}
